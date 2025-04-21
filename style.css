@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#media-container {
+    position: relative;
+    width: 100vw; /* Fullscreen width */
+    height: 100vh; /* Fullscreen height */
+    display: flex; /* Flexbox for centering content */
+    justify-content: center; /* Horizontally center the media */
+    align-items: center; /* Vertically center the media */
+    overflow: hidden; /* Prevent overflow */
+}
+
+img, video {
+    max-width: 100%; /* Fit within the viewport */
+    max-height: 100%; /* Fit within the viewport */
+    object-fit: contain; /* Maintain aspect ratio */
+    position: absolute; /* For easy layering during transitions */
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.25s ease-in-out; /* Smooth fade effect */
+    z-index: 2; /* Keep media on top */
+}
+
+img.visible, video.visible {
+    opacity: 1; /* Fully visible */
+}
+
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px) brightness(50%);
+    z-index: 1; /* Keep background behind the media */
+    display: none; /* Initially hidden */
+}
